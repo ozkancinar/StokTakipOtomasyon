@@ -48,6 +48,7 @@ public class Urunler extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -96,7 +97,18 @@ public class Urunler extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList3.setToolTipText("Silmek İstediğiniz Ürünü Seçmek İçin Çift Tıklayınız");
         jList3.setEnabled(false);
+        jList3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jList3FocusGained(evt);
+            }
+        });
+        jList3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jList3);
 
         jLabel4.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
@@ -106,6 +118,9 @@ public class Urunler extends javax.swing.JFrame {
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTextField1MouseEntered(evt);
             }
         });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,10 +139,20 @@ public class Urunler extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jButton1.setText("+");
-        jButton1.setToolTipText("Ekle");
+        jButton1.setToolTipText("Ürün Kodu Ekle");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jButton2.setText("SİL");
+        jButton2.setToolTipText("Kayıtlı Ürün Kodunu Sil");
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -137,9 +162,6 @@ public class Urunler extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,20 +174,26 @@ public class Urunler extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(46, 46, 46)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(27, 27, 27))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jLabel5)
                         .addGap(42, 42, 42)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,11 +211,13 @@ public class Urunler extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jButton1))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(jButton1)))
+                .addGap(120, 120, 120))
         );
 
         pack();
@@ -220,6 +250,9 @@ public class Urunler extends javax.swing.JFrame {
         // TODO add your handling code here:
         jList2.setEnabled(true);
         jList1.setEnabled(true);
+        jList3.setEnabled(false);
+        jButton2.setEnabled(false);
+        jTextField1.setText("");
         //List hedef = (List)evt.getSource();
         String grup; //= hedef.get(jList1.getSelectedIndex()).toString();
         grup = jList1.getSelectedValue();
@@ -244,6 +277,9 @@ public class Urunler extends javax.swing.JFrame {
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
         // TODO add your handling code here:
         jList3.setEnabled(false);
+        jList3.setEnabled(false);
+        jButton2.setEnabled(false);
+        jTextField1.setText("");
         String marka; //= hedef.get(jList1.getSelectedIndex()).toString();
         marka = jList2.getSelectedValue();
         System.out.println(marka);
@@ -285,6 +321,55 @@ public class Urunler extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         boolean durum = false;
+        try {
+            int id=0;
+            id = new codes.urun().UrunIdBul(jTextField1.getText().trim(), this.markaId, this.grupId);
+            if(id>0){
+                durum = new codes.urun().UrunSil(id);
+            if(durum){
+                JOptionPane.showMessageDialog(this, "Kayıt Başarıyla Silindi");
+                jTextField1.setText("");
+                UrunKoduAcilis();
+                jList3.setSelectedIndex(0);
+                jList2.setSelectedIndex(0);
+                jList1.setSelectedIndex(0);
+                this.markaId=0;
+                this.grupId=0;
+            }else{
+                JOptionPane.showMessageDialog(this, "Silinirken Hata Oldu. Silinemedi");
+            }
+            }else{
+               JOptionPane.showMessageDialog(this, "Ürün Bulunamadı");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Eklemeler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jList3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jList3FocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jList3FocusGained
+
+    private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
+        // TODO add your handling code here:
+      if (evt.getClickCount() ==2) {
+          jList3.setEnabled(true);
+          jButton2.setEnabled(true);
+      }
+      if(jList3.isEnabled()){
+        String urunKod = jList3.getSelectedValue().toString();
+        jTextField1.setText(urunKod);
+      }
+    }//GEN-LAST:event_jList3MouseClicked
+
+    private void jTextField1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1MouseEntered
     public void UrunGrubuAcilis(){
         List<codes.urun> gruplist = null;
         DefaultListModel listmodel = new DefaultListModel();
@@ -390,6 +475,7 @@ public class Urunler extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

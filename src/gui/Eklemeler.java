@@ -467,7 +467,7 @@ public class Eklemeler extends javax.swing.JFrame {
         jList1.repaint();
     }
     public void MarkalarAcilis(){
-           List<codes.urun> gruplist = null;
+        List<codes.urun> gruplist = null;
         DefaultListModel listmodel = new DefaultListModel();
         listmodel.clear();
         try {

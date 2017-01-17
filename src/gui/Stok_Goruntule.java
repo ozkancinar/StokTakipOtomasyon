@@ -5,19 +5,23 @@
  */
 package gui;
 
+import codes.urun;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import jdk.nashorn.internal.scripts.JO;
 
 /**
  *
@@ -43,10 +47,19 @@ public class Stok_Goruntule extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -57,6 +70,15 @@ public class Stok_Goruntule extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -65,15 +87,88 @@ public class Stok_Goruntule extends javax.swing.JFrame {
             }
         });
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrele", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox4ItemStateChanged(evt);
+            }
+        });
+        jComboBox4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox4MouseClicked(evt);
+            }
+        });
+
+        jLabel6.setText("Müşteri");
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel7.setText("Marka");
+
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel8.setText("Ürün Grubu");
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 0));
+        jButton1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButton1.setText("UYGULA");
+        jButton1.setToolTipText("Filtre Uygula");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox8, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Ürün Kodu", "Stok"
+                "Marka", "Ürün Kodu", "Toplam Stok"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -97,34 +192,52 @@ public class Stok_Goruntule extends javax.swing.JFrame {
 
         jLabel1.setText("Ara");
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jButton3.setText("TÜMÜNÜ GÖRÜNTÜLE");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(45, 45, 45)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(154, 154, 154)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Güncel Stok Durumu", jPanel1);
+
+        jPanel2.setAutoscrolls(true);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,7 +249,28 @@ public class Stok_Goruntule extends javax.swing.JFrame {
             new String [] {
                 "Ürün Kodu", "Adet", "Tarih", "Olay"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTable2FocusLost(evt);
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jRadioButton1.setText("Stok Girişleri");
@@ -180,14 +314,14 @@ public class Stok_Goruntule extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jComboBox1, 0, 348, Short.MAX_VALUE)
+                .addComponent(jComboBox1, 0, 264, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         jTextField2.setText("Ara..");
@@ -209,27 +343,107 @@ public class Stok_Goruntule extends javax.swing.JFrame {
 
         jLabel2.setText("Ara");
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrele", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 1, 12))); // NOI18N
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Ürün Grubu");
+
+        jLabel4.setText("Müşteri");
+
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel5.setText("Marka");
+
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton2.setBackground(new java.awt.Color(0, 153, 0));
+        jButton2.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jButton2.setText("UYGULA");
+        jButton2.setToolTipText("Filtre Uygula");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton4.setText("SİL");
+        jButton4.setEnabled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(45, 45, 45)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1))
-                .addGap(49, 49, 49)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(45, 45, 45)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
+                .addGap(22, 22, 22))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,19 +451,22 @@ public class Stok_Goruntule extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addComponent(jRadioButton2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jRadioButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButton3))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jButton4)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -274,7 +491,11 @@ public class Stok_Goruntule extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    DefaultTableModel GunceltabloModel = new DefaultTableModel();
+    String UrunKodu="", Olay="", Tarih="";
+    int Adet=0;
     public void StokGuncelGoster(){
+        Comboboxlar();
         DefaultTableModel stoktablo = (DefaultTableModel) jTable1.getModel();
         stoktablo.getDataVector().clear();
         stoktablo.setRowCount(0);
@@ -289,7 +510,15 @@ public class Stok_Goruntule extends javax.swing.JFrame {
         int giren = 0, cikan = 0;
         for(int i=0;i<urunlist.size();i++){
             v[i] = new Vector();
+            String marka_adi ="";
+            try {
+                marka_adi = new codes.urun().MarkaAdiAl(urunlist.get(i).getMarka_id());
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            v[i].add(marka_adi);
             v[i].add(urunlist.get(i).getUrun_kodu());
+            
             try { 
                 giren = new codes.stok().StokToplamGiris(urunlist.get(i).getUrun_kodu());
             } catch (SQLException ex) {
@@ -306,9 +535,65 @@ public class Stok_Goruntule extends javax.swing.JFrame {
         }
         jTable1.setModel(stoktablo);
         jTable1.repaint();
+        this.GunceltabloModel=stoktablo;
     }
-    
+    public void Comboboxlar(){
+        List<codes.urun> gruplist = null;
+        DefaultComboBoxModel listmodel = new DefaultComboBoxModel();
+        listmodel.removeAllElements();
+        try {
+            gruplist = new codes.urun().MarkalarHepsi();
+        } catch (SQLException ex) {
+            Logger.getLogger(Eklemeler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        listmodel.addElement("Hepsi");
+        for(int n=0;n<gruplist.size();n++){
+            listmodel.addElement(gruplist.get(n).getUrun_marka());
+        }
+        jComboBox6.setModel(listmodel);
+        jComboBox6.repaint();
+        jComboBox8.setModel(listmodel);
+        jComboBox8.repaint();
+        
+        ///////////////////Müşteriler///////////////////////
+        List<codes.stok> gruplist1 = null;
+        DefaultComboBoxModel listmodel1 = new DefaultComboBoxModel();
+        listmodel1.removeAllElements();
+        try {
+            gruplist1 = new codes.stok().MusteriListesi();
+        } catch (SQLException ex) {
+            Logger.getLogger(Eklemeler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        listmodel1.addElement("Hepsi");
+        for(int n=0;n<gruplist1.size();n++){
+            listmodel1.addElement(gruplist1.get(n).getMusteri_ad());
+        }
+        jComboBox5.setModel(listmodel1);
+        jComboBox7.setModel(listmodel1);
+        jComboBox7.repaint();
+        jComboBox5.repaint();
+        
+    }
     public void StokGirisCikisGoster(boolean eskiye){
+        
+        List<codes.urun> gruplist = null;
+        DefaultComboBoxModel listmodel = new DefaultComboBoxModel();
+        listmodel.removeAllElements();
+        try {
+            gruplist = new codes.urun().UrunGrubuHepsi();
+        } catch (SQLException ex) {
+            Logger.getLogger(Eklemeler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        listmodel.addElement("Hepsi");
+        for(int n=0;n<gruplist.size();n++){
+            listmodel.addElement(gruplist.get(n).getUrun_grubu());
+        }
+        jComboBox2.setModel(listmodel);
+        jComboBox2.repaint();
+        jComboBox4.setModel(listmodel);
+        jComboBox4.repaint();
+        
+        
         DefaultTableModel stoktablo = (DefaultTableModel) jTable2.getModel();
         stoktablo.getDataVector().clear();
         stoktablo.setRowCount(0);
@@ -569,6 +854,219 @@ public class Stok_Goruntule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String grupAd = "",musteriAd = "", markaAd="";
+        int grupId=0; int markaId=0,musteriId=0;
+        grupAd = jComboBox4.getSelectedItem().toString().trim();
+        musteriAd = jComboBox7.getSelectedItem().toString().trim();
+        markaAd = jComboBox8.getSelectedItem().toString().trim();
+        if(!grupAd.equals("Hepsi")){
+            try {
+                grupId = new codes.urun().GrupIdAl(grupAd);
+           // JOptionPane.showMessageDialog(this, grupId);
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(!musteriAd.equals("Hepsi")){
+            try {
+                musteriId = new codes.urun().MusteriIdBul(musteriAd);
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(!markaAd.equals("Hepsi")){
+            try {
+                markaId = new codes.urun().MarkaIdAl(markaAd);
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        DefaultTableModel stoktablo = (DefaultTableModel) jTable1.getModel();
+        stoktablo.getDataVector().clear();
+        stoktablo.setRowCount(0);
+        List<codes.stok> stoklist = null;
+        List<String> urunlist = null;
+        try {
+            urunlist = new codes.stok().StokToplamFiltreli(grupId, markaId, musteriId);
+        } catch (SQLException ex) {
+            Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Vector[] v = new Vector[urunlist.size()];
+        int giren = 0, cikan = 0;
+        for(int i=0;i<urunlist.size();i++){
+            v[i] = new Vector();
+            try { 
+                giren = new codes.stok().StokToplamGiris(urunlist.get(i));
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                cikan = new codes.stok().StokToplamCikis(urunlist.get(i));
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int toplam = giren-cikan;
+            List<codes.urun> urunKoduAra =null;
+            try {
+                urunKoduAra = new codes.urun().UrunKoduAra(urunlist.get(i));
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String marka_adi ="";
+            for (urun urunKoduAra1 : urunKoduAra) {
+                try {
+                marka_adi = new codes.urun().MarkaAdiAl(urunKoduAra1.getMarka_id());
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+            v[i].add(marka_adi);
+            v[i].add(urunlist.get(i));
+            v[i].add(toplam);
+            stoktablo.insertRow(i, v[i]);
+        }
+        jTable1.setModel(stoktablo);
+        jTable1.repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox4MouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jComboBox4MouseClicked
+
+    private void jComboBox4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox4ItemStateChanged
+        // TODO add your handling code here:
+         String grupAd = "";
+        int grupId=0;
+        grupAd = jComboBox4.getSelectedItem().toString().trim();
+        try {
+            grupId = new codes.urun().GrupIdAl(grupAd);
+           // JOptionPane.showMessageDialog(this, grupId);
+        } catch (SQLException ex) {
+            Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jComboBox4ItemStateChanged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        jComboBox4.setSelectedIndex(0);
+        jComboBox7.setSelectedIndex(0);
+        jComboBox8.setSelectedIndex(0);
+        StokGuncelGoster();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       
+        String grupAd = "",musteriAd = "", markaAd="";
+        int grupId=0; int markaId=0,musteriId=0;
+        grupAd = jComboBox2.getSelectedItem().toString().trim();
+        musteriAd = jComboBox5.getSelectedItem().toString().trim();
+        markaAd = jComboBox6.getSelectedItem().toString().trim();
+        if(!grupAd.equals("Hepsi")){
+            try {
+                grupId = new codes.urun().GrupIdAl(grupAd);
+           // JOptionPane.showMessageDialog(this, grupId);
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(!musteriAd.equals("Hepsi")){
+            try {
+                musteriId = new codes.urun().MusteriIdBul(musteriAd);
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(!markaAd.equals("Hepsi")){
+            try {
+                markaId = new codes.urun().MarkaIdAl(markaAd);
+            } catch (SQLException ex) {
+                Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        DefaultTableModel stoktablo = (DefaultTableModel) jTable2.getModel();
+        stoktablo.getDataVector().clear();
+        stoktablo.setRowCount(0);
+        List<codes.stok> stoklist = null;
+        List<codes.stok> stoklist2 = null;
+        try {
+            stoklist = new codes.stok().StokGirisFiltrele(true, grupId, markaId, musteriId);
+        } catch (SQLException ex) {
+            Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Vector[] v = new Vector[stoklist.size()];
+        int i=0;
+        while(i<stoklist.size()){
+            v[i] = new Vector();
+            v[i].add(stoklist.get(i).getUrun_kodu());
+            v[i].add(stoklist.get(i).getAdet());
+            String[] temp = stoklist.get(i).getTarih().split("-");
+            String tarih = temp[2] +"/"+ temp[1] +"/"+ temp[0];
+            v[i].add(tarih);
+            v[i].add(stoklist.get(i).getOlay());
+            stoktablo.insertRow(i, v[i]);
+            i++;
+        }
+        i=0;
+        jTable2.setModel(stoktablo);
+        jTable2.repaint();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        if(evt.getClickCount()==2){
+         JTable target = (JTable)evt.getSource();
+         int row = target.getSelectedRow();
+         int column = target.getSelectedColumn();
+         this.UrunKodu = jTable2.getValueAt(row, 0).toString();
+         this.Olay = jTable2.getValueAt(row, 3).toString();
+         this.Adet = Integer.valueOf(jTable2.getValueAt(row, 1).toString());
+         this.Tarih = jTable2.getValueAt(row, 2).toString();
+         jButton4.setEnabled(true);
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        boolean durum = false;
+       
+        try {
+            durum = new codes.stok().StokIslemSil(this.UrunKodu, this.Adet, this.Tarih, this.Olay);
+        } catch (SQLException ex) {
+            Logger.getLogger(Stok_Goruntule.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(durum){
+            JOptionPane.showMessageDialog(this, this.UrunKodu +" \n \t Silindi");
+            this.UrunKodu="";
+            this.Adet=0;
+            this.Tarih="";
+            this.Olay="";
+            jButton4.setEnabled(false);
+            StokGirisCikisGoster(true);
+        }
+        else{
+             JOptionPane.showMessageDialog(this, "HATA \n Kayıt Silinemedi","HATA",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTable2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable2FocusGained
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTable2FocusGained
+
+    private void jTable2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable2FocusLost
+        // TODO add your handling code here:
+       
+        
+    }//GEN-LAST:event_jTable2FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -605,12 +1103,30 @@ public class Stok_Goruntule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;

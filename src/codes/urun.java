@@ -48,6 +48,40 @@ public class urun {
             return false;
         }
     }
+    public int UrunIdBul(String urun_kodu, int markaId, int grupId) throws SQLException{
+        baglanti vb = new baglanti();
+        vb.baglan();
+        
+        int id = 0;
+        Statement st = vb.con.createStatement();
+        urun[] urunGruplari;
+        String sorgu;
+        sorgu="select id from urunler where urun_kodu='"+urun_kodu+"'and grup_id="+grupId+"";
+        ps = vb.con.prepareStatement(sorgu);
+        rs = ps.executeQuery(sorgu);
+         while(rs.next()){
+              id = rs.getInt(1);
+          }
+         ps.close();
+         rs.close();
+         vb.con.close();
+         return id;
+    }
+    public boolean UrunSil(int urun_id) throws SQLException{
+        baglanti vb = new baglanti();
+        vb.baglan();
+        try{ 
+        String sorgu = "Delete from urunler where id="+urun_id+"";
+        ps = vb.con.prepareStatement(sorgu);
+        ps.executeUpdate();
+        ps.close();
+        vb.con.close();
+        return true;
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return false;
+        }
+      }
      public boolean MarkaEkle(urun U_urunler) throws SQLException{
           baglanti vb = new baglanti();
         vb.baglan();
@@ -143,6 +177,24 @@ public class urun {
          vb.con.close();
          return id;
       }
+       public String MarkaAdiAl(int marka_id) throws SQLException{
+            baglanti vb = new baglanti();
+        vb.baglan();
+        String marka = "";
+        Statement st = vb.con.createStatement();
+        urun[] urunGruplari;
+        String sorgu;
+        sorgu="select marka from markalar where id="+marka_id+"";
+        ps = vb.con.prepareStatement(sorgu);
+        rs = ps.executeQuery(sorgu);
+         while(rs.next()){
+             marka = rs.getString(1);
+          }
+         ps.close();
+         rs.close();
+         vb.con.close();
+         return marka;
+       }
        public boolean MarkaSil(int id) throws SQLException{
            baglanti vb = new baglanti();
         vb.baglan();
@@ -421,6 +473,7 @@ public class urun {
          while(rs.next()){
               urunGruplari[i] = new urun();
               urunGruplari[i].setUrun_kodu(rs.getString("urun_kodu"));
+              urunGruplari[i].setMarka_id(rs.getInt("marka_id"));
               urunlist.add(urunGruplari[i]);
               i++;
           }
