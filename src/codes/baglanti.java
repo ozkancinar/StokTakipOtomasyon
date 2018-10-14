@@ -21,8 +21,8 @@ public class baglanti {
      private String url = "jdbc:mysql://localhost:3306/";
     private String driver = "com.mysql.jdbc.Driver";
     private String dbname = "cinarstok";
-    private String username = "root";
-    private String password = "Ozkancinar";
+    private String username = "";
+    private String password = "";
     
     public void baglan(){
          try {
